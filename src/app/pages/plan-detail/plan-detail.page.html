@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>明细</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-img [src]="(plan$ | async)?.iconUrl"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{(plan$ | async)?.content}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{(plan$ | async).beginTime}} &mdash; {{(plan$ | async).endTime}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

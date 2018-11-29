@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>创建</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content" padding-top>
+  <form [formGroup]="form" *ngIf="form">
+    <ion-item-group>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">内容</ion-label>
+          <ion-textarea formControlName="content" placeholder="一个小目标"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-list>
+        <ion-item>
+          <ion-label>计划日期</ion-label>
+          <ion-datetime display-format="YYYY-MM-DD" formControlName="date" [min]="minDate" [max]="maxDate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>开始时间</ion-label>
+          <ion-datetime display-format="hh:mm:ss" formControlName="beginTime"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>结束时间</ion-label>
+          <ion-datetime display-format="hh:mm:ss" [value]="endTime" disabled></ion-datetime>
+        </ion-item>
+      </ion-list>
+    </ion-item-group>
+
+    <ion-row responsive-sm>
+      <ion-col>
+        <ion-button (click)="create()" expand="block">创建</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

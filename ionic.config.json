@@ -1,0 +1,7 @@
+{
+  "name": "xgf-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
