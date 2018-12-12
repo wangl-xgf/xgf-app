@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "ios:build": "ionic cordova build ios",
     "android:build": "ionic cordova build android --release --configuration=production && npm run jarsigner",
     "keytool": "keytool -genkey -v -keystore xgf-app.keystore -alias xgf-app -keyalg RSA -keysize 2048 -validity 10000",
     "jarsigner": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore xgf-app.keystore ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk xgf-app",
