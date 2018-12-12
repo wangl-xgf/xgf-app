@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button [defaultHref]="['/tabs/(home:home)']"></ion-back-button>
     </ion-buttons>
     <ion-title>明细</ion-title>
   </ion-toolbar>
@@ -17,4 +17,19 @@
       <p>{{(plan$ | async).beginTime}} &mdash; {{(plan$ | async).endTime}}</p>
     </ion-card-content>
   </ion-card>
+
+  <ion-row responsive-sm>
+    <ion-col *ngIf="!(plan$ | async)?.isTomorrow">
+      <ion-button (click)="service.change(plan.id)" expand="block">推持</ion-button>
+    </ion-col>
+    <ion-col *ngIf="(plan$ | async)?.isTomorrow">
+      <ion-button (click)="service.change(plan.id, 0)" expand="block">提前</ion-button>
+    </ion-col>
+    <ion-col *ngIf="(plan$ | async)?.planStatus !== 1">
+      <ion-button (click)="service.start(plan.id)" expand="block">开始</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block">结束</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

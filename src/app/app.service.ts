@@ -12,6 +12,8 @@ import {AddPlanParams} from './bean/params/add-plan.params';
 import {SetConfigParams} from './bean/params/set-config.params';
 import {ChangePlanParams} from './bean/params/change-plan.params';
 import {of} from 'rxjs';
+import {AddPlan, ChangePlan, OperatePlan} from './actions/app.actions';
+import {Store} from '@ngrx/store';
 
 @Injectable({
     providedIn: 'root'
@@ -23,6 +25,7 @@ export class AppService {
     private token: String;
 
     constructor(private httpClient: HttpClient,
+                private store$: Store<any>,
                 private alertController: AlertController) {
     }
 
@@ -129,6 +132,49 @@ export class AppService {
             ...json,
             sign: enc.Base64.stringify(HmacSHA256('Message', jsonStr))
         };
+    }
+
+
+    delete(id: number) {
+        this.store$.dispatch(new OperatePlan({
+            id,
+            planStatus: 2
+        }));
+    }
+
+    start(id: number) {
+        this.store$.dispatch(new OperatePlan({
+            id,
+            planStatus: 1
+        }));
+    }
+
+    change(id: number, day?: 0) {
+        if (day === 0) {
+            this.store$.dispatch(new ChangePlan({
+                id,
+                day
+            }));
+        } else {
+            this.alertController.create({
+                header: '请选择天数',
+                subHeader: '任务将被推持',
+                message: 'This is an alert message.',
+                buttons: [{
+                    text: '一天',
+                    cssClass: 'text-agin: text-center;',
+                    handler: () => this.store$.dispatch(new ChangePlan({
+                        id,
+                        day: 1
+                    }))
+                }, {
+                    text: '二天',
+                    handler: () => this.store$.dispatch(new ChangePlan({
+                        id,
+                        day: 2
+                    }))
+                }, '取消']
+            }).then(alert => alert.present());        }
     }
 
 }

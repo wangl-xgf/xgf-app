@@ -8,6 +8,7 @@ import {DatePipe} from '@angular/common';
 import {getUserConfiguration} from '../../reducers';
 import {filter, take} from 'rxjs/operators';
 import {UserConfigurationInfo} from '../../bean/result/index.result';
+import {AppService} from '../../app.service';
 
 @Component({
     selector: 'app-add-plan',
@@ -30,6 +31,7 @@ export class AddPlanPage implements OnInit {
                 private store$: Store<any>,
                 private router: Router,
                 private alertController: AlertController,
+                public service: AppService,
                 private datePipe: DatePipe) {
     }
 

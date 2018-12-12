@@ -5,6 +5,7 @@ import {getPlanEntities} from '../../reducers';
 import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {PlanInfo} from '../../bean/result/index.result';
+import {AppService} from '../../app.service';
 
 @Component({
     selector: 'app-plan-detail',
@@ -16,7 +17,8 @@ export class PlanDetailPage implements OnInit {
     plan$: Observable<PlanInfo>;
 
     constructor(private activatedRoute: ActivatedRoute,
-                private store$: Store<any>) {
+                private store$: Store<any>,
+                public service: AppService) {
     }
 
     ngOnInit() {
