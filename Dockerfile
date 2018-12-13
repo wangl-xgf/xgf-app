@@ -1,8 +1,8 @@
-FROM node AS builder
+FROM node:11.2.0 AS builder
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-RUN npm i && npm i -g @angular/cli@~7.0.0 && npm uninstall --save node-sass && npm install --save node-sass && npm run build
+RUN npm config set registry https://registry.npm.taobao.org && npm i && npm rebuild node-sass --force && npm i -g @angular/cli@~7.0.0 && npm run build
 
 FROM nginx:stable-alpine
 
