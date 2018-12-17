@@ -34,3 +34,4 @@ ionic cordova emulate ios
 ```
 npm run ios:build
 ```
+test
