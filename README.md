@@ -11,7 +11,6 @@ docker run -p 4200:80 xgf-app
 ```
 npm start
 ```
-
 ## package android apk (require ionic,cordova)
 
 ```
