@@ -1,6 +1,6 @@
 version: "2"
 services:
   xgf-app:
-    build: "xgf-app"
+    build: .
     ports:
     - "4200:80"
