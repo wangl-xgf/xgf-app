@@ -1,6 +1,7 @@
 version: "2"
 services:
   xgf-app:
+    container_name: xgf-app
     build: .
     ports:
     - "4200:4200"
