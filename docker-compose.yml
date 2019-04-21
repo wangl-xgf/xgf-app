@@ -1,7 +1,7 @@
 version: "2"
 services:
   xgf-app:
+    image: wangliang.sit:5000/xgf-app:v1.0
     container_name: xgf-app
-    build: .
     ports:
     - "4200:4200"
